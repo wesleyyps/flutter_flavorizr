@@ -23,6 +23,7 @@
  * OTHER DEALINGS IN THE SOFTWARE.
  */
 
+import 'dart:convert';
 import 'package:flutter_flavorizr/src/parser/models/flavorizr.dart';
 import 'package:flutter_flavorizr/src/processors/commons/copy_file_processor.dart';
 import 'package:flutter_flavorizr/src/processors/commons/queue_processor.dart';
@@ -45,8 +46,17 @@ class FlutterTargetFileProcessor extends QueueProcessor {
             RuntimeFileStringProcessor(
               '$destination/main_$flavorName.dart',
               ReplaceStringProcessor(
-                '[[FLAVOR_NAME]]',
-                flavorName.toLowerCase(),
+                '[[name]]',
+                config.flavors[flavorName]?.app?.name ?? flavorName,
+                config: config,
+              ),
+              config: config,
+            ),
+            RuntimeFileStringProcessor(
+              '$destination/main_$flavorName.dart',
+              ReplaceStringProcessor(
+                '[[variables]]',
+                jsonEncode(config.flavors[flavorName]?.app?.variables ?? {}),
                 config: config,
               ),
               config: config,

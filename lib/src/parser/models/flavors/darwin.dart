@@ -33,14 +33,14 @@ part 'darwin.g.dart';
 
 @JsonSerializable(anyMap: true, createToJson: false)
 class Darwin extends OS with BuildSettingsMixin {
-  @JsonKey(required: true, disallowNullValue: true)
-  final String bundleId;
+  @JsonKey(disallowNullValue: true)
+  final String? bundleId;
 
   @JsonKey(disallowNullValue: true, defaultValue: {})
   final Map<String, Variable> variables;
 
   Darwin({
-    required this.bundleId,
+    this.bundleId,
     this.variables = const {},
     Map<String, dynamic> buildSettings = const {},
     bool generateDummyAssets = true,

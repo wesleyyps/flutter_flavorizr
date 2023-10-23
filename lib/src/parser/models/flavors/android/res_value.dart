@@ -4,14 +4,14 @@ part 'res_value.g.dart';
 
 @JsonSerializable(anyMap: true, createToJson: false)
 class ResValue {
-  @JsonKey(required: true, disallowNullValue: true)
-  final String type;
+  @JsonKey(disallowNullValue: true, defaultValue: 'string')
+  final String? type;
 
   @JsonKey(required: true, disallowNullValue: true)
   final String value;
 
   const ResValue({
-    required this.type,
+    this.type,
     required this.value,
   });
 

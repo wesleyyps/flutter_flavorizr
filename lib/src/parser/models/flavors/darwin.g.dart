@@ -9,11 +9,11 @@ part of 'darwin.dart';
 Darwin _$DarwinFromJson(Map json) {
   $checkKeys(
     json,
-    requiredKeys: const ['bundleId'],
+    requiredKeys: const [],
     disallowNullValues: const ['firebase', 'icon', 'bundleId', 'variables'],
   );
   return Darwin(
-    bundleId: json['bundleId'] as String,
+    bundleId: json['bundleId'] as String?,
     variables: (json['variables'] as Map?)?.map(
           (k, e) => MapEntry(k as String,
               Variable.fromJson(Map<String, dynamic>.from(e as Map))),

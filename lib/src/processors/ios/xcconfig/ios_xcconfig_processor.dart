@@ -24,6 +24,7 @@
  */
 
 import 'dart:collection';
+import 'dart:convert';
 
 import 'package:flutter_flavorizr/src/extensions/extensions_map.dart';
 import 'package:flutter_flavorizr/src/parser/models/flavorizr.dart';
@@ -63,7 +64,7 @@ class IOSXCConfigProcessor extends StringProcessor {
   }
 
   void _appendBody(StringBuffer buffer) {
-    final Map<String, Variable> variables = LinkedHashMap.from({
+    Map<String, Variable> variables = LinkedHashMap.from({
       'FLUTTER_TARGET': Variable(value: 'lib/main_$_flavorName.dart'),
       'ASSET_PREFIX': Variable(value: _flavorName),
       'BUNDLE_NAME': Variable(value: _flavor.app.name),
@@ -78,6 +79,10 @@ class IOSXCConfigProcessor extends StringProcessor {
     buffer.writeln();
     variables.forEach((key, variable) {
       buffer.writeln('$key=${variable.value}');
+    });
+    
+    _flavor.app.variables?.forEach((key, value) {
+      buffer.writeln('$key=${value.value}');
     });
   }
 

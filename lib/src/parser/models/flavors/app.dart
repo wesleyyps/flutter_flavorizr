@@ -35,9 +35,17 @@ class App {
   @JsonKey(disallowNullValue: true)
   final String? icon;
 
+  @JsonKey(disallowNullValue: true)
+  final Map? variables;
+
+  @JsonKey(disallowNullValue: true)
+  final String? applicationId;
+
   App({
     required this.name,
     this.icon,
+    this.variables,
+    this.applicationId
   });
 
   factory App.fromJson(Map<String, dynamic> json) => _$AppFromJson(json);

@@ -1,8 +1,10 @@
-import 'flavors.dart';
-
-import 'main.dart' as runner;
+import 'package:flutter_flavor/flutter_flavor.dart';
+import 'runner.dart' as runner;
 
 Future<void> main() async {
-  F.appFlavor = Flavor.[[FLAVOR_NAME]];
+  FlavorConfig(
+      name: "[[name]]",
+      variables: [[variables]],
+  );
   await runner.main();
 }

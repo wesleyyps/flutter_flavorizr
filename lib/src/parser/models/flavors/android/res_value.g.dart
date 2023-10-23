@@ -9,11 +9,11 @@ part of 'res_value.dart';
 ResValue _$ResValueFromJson(Map json) {
   $checkKeys(
     json,
-    requiredKeys: const ['type', 'value'],
+    requiredKeys: const ['value'],
     disallowNullValues: const ['type', 'value'],
   );
   return ResValue(
-    type: json['type'] as String,
+    type: json['type'] as String?,
     value: json['value'] as String,
   );
 }

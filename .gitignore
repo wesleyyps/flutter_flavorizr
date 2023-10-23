@@ -8,3 +8,4 @@
 build/
 .fvm/
 example/.fvm
+.history
