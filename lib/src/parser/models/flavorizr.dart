@@ -45,7 +45,7 @@ class Flavorizr {
 
   @JsonKey(
       defaultValue:
-          'https://github.com/wesleyyps/flutter_flavorizr/releases/download/master/assets.zip')
+          'https://github.com/wesleyyps/flutter_flavorizr/releases/download/dev-master/assets.zip')
   final String assetsUrl;
 
   @JsonKey()
